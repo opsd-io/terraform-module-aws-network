@@ -20,6 +20,18 @@ variable "additional_cidr_blocks" {
   default     = []
 }
 
+variable "igw_name" {
+  description = "The 'Name' tag of Internet Gateway."
+  type        = string
+  default     = null
+}
+
+variable "vgw_name" {
+  description = "The 'Name' tag of VPN Gateway."
+  type        = string
+  default     = null
+}
+
 variable "public_subnet_groups" {
   description = "Public subnet groups definition map. See examples for details."
   type = map(object({
