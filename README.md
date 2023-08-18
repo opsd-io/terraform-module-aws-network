@@ -2,22 +2,21 @@
 
 Meet **OPSd**. The unique and effortless way of managing cloud infrastructure.
 
-# terraform-module-template
+# terraform-module-aws-network
 
 ## Introduction
 
-What does the module provide?
+This Terraform module creates VPC, subnets, gateways and few other network related resources.
+Is is complete "network" layer for your infrastructure.
 
 ## Usage
 
 ```hcl
-module "module_name" {
-  source  = "github.com/opsd-io/module_name"
-  version = ">= 0.1.0"
+module "network" {
+  source  = "github.com/opsd/terraform-module-aws-network"
 
-  # Variables
-  variable_name     = foo
-  variable_password = bar
+  vpc_name   = "test-vpc"
+  cidr_block = "10.100.0.0/16"
 }
 ```
 
