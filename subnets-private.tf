@@ -6,6 +6,10 @@ resource "aws_subnet" "private" {
   cidr_block                          = each.value.cidr_block
   map_public_ip_on_launch             = false
   private_dns_hostname_type_on_launch = each.value.hostname_type
+
+  enable_resource_name_dns_a_record_on_launch    = true
+  enable_resource_name_dns_aaaa_record_on_launch = false
+
   tags = merge(var.common_tags, each.value.extra_tags, {
     Name = "${var.vpc_name}-${each.key}"
   })
