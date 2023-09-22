@@ -96,6 +96,12 @@ resource "aws_vpc" "main" {
   })
 }
 
+resource "aws_vpc_ipv4_cidr_block_association" "main" {
+  for_each   = var.additional_cidr_blocks
+  vpc_id     = aws_vpc.main.id
+  cidr_block = each.value
+}
+
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
   tags = merge(var.common_tags, {
